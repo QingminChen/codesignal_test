@@ -97,44 +97,201 @@
 # print(keyword_index(docs))  # Expected output: {'Hello': {0: 1}, 'world': {0: 1, 1: 1}, 'of': {1: 1}, 'python': {1: 1, 2: 1}, 'is': {2: 1}, 'a': {2: 1}, 'snake': {2: 1}}
 
 
-def recursiveSumEven(arr, idx=0):
-    # sum = 0
-    # for idx, num in enumerate(arr):
-    #     if idx%2 == 0:
-    #         sum = sum+arr[idx]
-    # return sum
-    # implement this
-    if len(arr) == 0:
-        return 0
-    if idx < len(arr):
-       if idx != 0:
-          if idx%2 == 1 :
-             arr[idx]=arr[idx-1]+0
-          else:
-             arr[idx]=arr[idx-1]+arr[idx]
-       recursiveSumEven(arr,idx+1)
-    return arr[len(arr)-1]
+# def recursiveSumEven(arr, idx=0):
+#     # sum = 0
+#     # for idx, num in enumerate(arr):
+#     #     if idx%2 == 0:
+#     #         sum = sum+arr[idx]
+#     # return sum
+#     # implement this
+#     if len(arr) == 0:
+#         return 0
+#     if idx < len(arr):
+#        if idx != 0:
+#           if idx%2 == 1 :
+#              arr[idx]=arr[idx-1]+0
+#           else:
+#              arr[idx]=arr[idx-1]+arr[idx]
+#        recursiveSumEven(arr,idx+1)
+#     return arr[len(arr)-1]
+#
+#
+# # Testing the function
+# print(recursiveSumEven([1, 2, 3, 4, 5, 6])) # Expected output: 9
+# print(recursiveSumEven([2, 3])) # Expected output: 2
+# print(recursiveSumEven([]))
+# print('123456')
+#
+#
+# def factorial(num):
+#     # implement this
+#     if num == 0 :
+#         return 1
+#     if num < 0 :
+#         return None
+#     return num*factorial(num-1)
+#     pass
+#
+# def factorials(nums):
+#     return [factorial(num) if factorial(num) is not None else 'Error' for num in nums]
+#
+# # print(factorials([2, 3, 4])) # should print: [2, 6, 24]
+# # print(factorials([1, 5, 6])) # should print: [1, 120, 720]
+# print(factorials([0, -3, 10])) # should print: [1, 'Error', 3628800]
 
 
-# Testing the function
-print(recursiveSumEven([1, 2, 3, 4, 5, 6])) # Expected output: 9
-print(recursiveSumEven([2, 3])) # Expected output: 2
-print(recursiveSumEven([]))
-print('123456')
+# # List of sorted ages in a social media platform
+# ages = [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+#
+# def binary_search_iterative(data, target):  # this is the correct solution, my solution But now I think it doesn't make sense
+#     low = 0
+#     high = len(data)-1
+#     while high - low > 0:
+#         mid = (low + high) // 2
+#         if target < data[mid]:
+#             high = mid-1
+#         elif target > data[mid]:
+#             low = mid+1
+#         else:  # if target is equal to data[mid]
+#             return mid
+#     return low if data[low] == target else None
+#
+# def binary_search_iterative2(data, target):  # this is the correct solution
+#     low = 0
+#     high = len(data)
+#     while high - low >= 0:
+#         mid = low + (high - low) // 2
+#         if target < data[mid]:
+#             high = mid-1
+#         elif target > data[mid]:
+#             low = mid+1
+#         else:  # if target is equal to data[mid]
+#             return mid
+#     return None
+#
+# # Let's say we want to find out what position a 30-year-old holds in our sorted list of ages
+# age_query = 30
+# result = binary_search_iterative2(ages, age_query)
+#
+# if result is not None:
+#     print(f"Age of {age_query} is found at position {result} in the age list.")
+# else:
+#     print(f"No profile is found with age {age_query}.")
 
 
-def factorial(num):
-    # implement this
-    if num == 0 :
-        return 1
-    if num < 0 :
-        return None
-    return num*factorial(num-1)
-    pass
 
-def factorials(nums):
-    return [factorial(num) if factorial(num) is not None else 'Error' for num in nums]
+# word_lengths = [i for i in range(1, 501)]  # Lengths from 1 to 500
+#
+# # TODO: Implement the recursion-based binary_search_recursive method
+# def binary_search_recursive(data, target, low, high):
+#     if low <= high:
+#        mid = low + (high - low) // 2
+#        if low <= high:
+#           if data[mid] == target:
+#              return mid
+#           elif data[mid]<target:
+#              return binary_search_recursive(data, target, mid+1, high)
+#           else:
+#              return binary_search_recursive(data, target, low, mid-1)
+#     return None
+#
+#
+# def binary_search(data, target, low, high): # This is the most make-sense solution
+#     while low <= high:
+#        mid = low + (high - low) // 2
+#        if low <= high:
+#           if data[mid] == target:
+#              return mid
+#           elif data[mid]<target:
+#              low = mid + 1
+#           else:
+#              high = mid - 1
+#     return -1
+#
+# # Suppose there is a spelling bee, and a contestant is given a word.
+# # The contestant knows the word is in the dictionary, so let's find what position the length of this word would hold in our sorted list of word lengths
+# word_length_query = 237
+# result = binary_search_recursive(word_lengths, word_length_query, 0, len(word_lengths))
+# # result = binary_search(word_lengths, word_length_query, 0, len(word_lengths))
+# if result is not None:
+#     print(f"Words of length {word_length_query} are found at position {result} in the word lengths list.")
+# else:
+#     print(f"No words are found with length {word_length_query}.")
 
-# print(factorials([2, 3, 4])) # should print: [2, 6, 24]
-# print(factorials([1, 5, 6])) # should print: [1, 120, 720]
-print(factorials([0, -3, 10])) # should print: [1, 'Error', 3628800]
+
+
+# import math
+#
+# # Define the continuous function for the height of the ball at time t
+# def h(t, initial_height, g):
+#     return initial_height - (0.5) * g * t**2
+#
+# # Define the binary search function
+# def binary_search(func, initial_height, g, target, left, right, precision):
+#     while right - left > precision:
+#         mid = left + (right - left) / 2  # we recommend calculate the mid in this way
+#         if func(mid, initial_height, g) < target:
+#             right = mid
+#         else:
+#             left = mid
+#     return left + (right - left) / 2
+#
+# # Requested precision
+# epsilon = 1e-6
+# # Constants
+# initial_height = 100  # Initial height in meters
+# g = 9.81  # acceleration due to gravity
+#
+# # Time range
+# time_range = [0, 10]
+#
+# # Call binary_search for h with the target being 0, indicating the hit of the ground
+# result = binary_search(h, initial_height, g, 0, time_range[0], time_range[1], epsilon)
+#
+# print("Time when the ball hits the ground (seconds): ", result)
+#
+#
+# # The value of x for which f(x) is approximately 0 within the interval [-5, 5] is:  1.923944428563118  1.9239446520805359
+
+
+import math
+# this is not a classic problem ,which has no generic solution to solve it,
+# since different equations have special cases, you need to based on the equation to think out the loop condition is by your own brain which is not efficient
+# way to solve this kind of problem
+# it's not linear sorted problem
+import numpy as np
+
+
+# Define a continuous function 'f' where f(x) = x^4 - x^2 - 10
+def f(x):
+    return x ** 4 - x ** 2 - 10
+
+
+# Define the binary search function
+def binary_search(func, target, left, right, precision):
+    while func(left) > target and func(right) > target:
+        middle = left + (right -left) / 2
+        if func(middle) < target+precision:
+            left = middle
+        else:
+            right = middle
+
+    return left + (right -left) / 2
+
+
+epsilon = 1e-6  # to make sure the solution is within an acceptable range
+target = 50  # target value for root of function 'f'
+start = -5  # starting point of the interval
+end = 5  # ending point of the interval
+
+# def range_with_floats(start, stop, step):
+#     while stop > start:
+#         yield start
+#         start += step
+#
+# for x in range_with_floats(-5,5.1,0.15):
+#    print(str(x)+' '+str(f(x)))
+
+
+result = binary_search(f, target, start, end, epsilon)
+print("The value of x for which f(x) is approximately 50 within the interval [" + str(start) + ", " + str(end) + "] is: ",result)
